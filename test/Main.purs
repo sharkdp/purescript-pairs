@@ -5,9 +5,10 @@ import Prelude
 import Type.Proxy (Proxy(..), Proxy2(..))
 
 import Data.Array (cons, snoc, fromFoldable)
-import Data.Pair (Pair(..), fst, snd, swap, uncurry)
+import Data.Pair (Pair(..), (^), fst, snd, swap, uncurry)
 import Data.Foldable (foldMap, foldr, foldl)
 import Data.Traversable (sum, product, sequence)
+import Data.Distributive (distribute, collect)
 import Data.Maybe (Maybe(..))
 
 import Control.Monad.Eff (Eff)
@@ -71,5 +72,7 @@ main = do
   assert $ foldl snoc [] p1 == [2, 3]
   assert $ ((+) <$> p1 <*> p2) == point 6 10
   assert $ (uncurry (+) p1) == 5
-  assert $ sequence (Pair (Just 2) (Just 5)) == Just (Pair 2 5)
-  assert $ sequence (Pair (Just 2) Nothing) == Nothing
+  assert $ sequence (Just 2 ^ Just 5) == Just (2 ^ 5)
+  assert $ sequence (Just 2 ^ Nothing) == Nothing
+  assert $ distribute [2 ^ 3, 4 ^ 5] == [2, 4] ^ [3, 5]
+  assert $ collect (\x -> x ^ square x) [1, 2, 3] == [1, 2, 3] ^ [1, 4, 9]

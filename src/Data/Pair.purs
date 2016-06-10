@@ -17,6 +17,7 @@ import Prelude
 import Data.Monoid (class Monoid, mempty)
 import Data.Foldable (class Foldable)
 import Data.Traversable (class Traversable)
+import Data.Distributive (class Distributive)
 
 import Test.QuickCheck.Arbitrary (class Arbitrary, arbitrary)
 
@@ -80,6 +81,10 @@ instance foldablePair :: Foldable Pair where
 instance traversablePair :: Traversable Pair where
   traverse f (Pair x y) = Pair <$> f x <*> f y
   sequence (Pair mx my) = Pair <$> mx <*> my
+
+instance distributivePair :: Distributive Pair where
+  distribute xs = map fst xs ^ map snd xs
+  collect f xs = map (fst <<< f) xs ^ map (snd <<< f) xs
 
 instance arbitraryPair :: Arbitrary a => Arbitrary (Pair a) where
   arbitrary = Pair <$> arbitrary <*> arbitrary

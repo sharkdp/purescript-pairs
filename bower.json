@@ -4,8 +4,8 @@
     "David Peter <mail@david-peter.de>"
   ],
   "repository": {
-      "type": "git",
-      "url": "git://github.com/sharkdp/purescript-pairs.git"
+    "type": "git",
+    "url": "git://github.com/sharkdp/purescript-pairs.git"
   },
   "license": "MIT",
   "ignore": [
@@ -17,7 +17,8 @@
   "dependencies": {
     "purescript-console": "^1.0.0",
     "purescript-monoid": "^1.0.0",
-    "purescript-foldable-traversable": "^1.0.0"
+    "purescript-foldable-traversable": "^1.0.0",
+    "purescript-distributive": "^1.0.0"
   },
   "devDependencies": {
     "purescript-quickcheck-laws": "^1.0.0"
