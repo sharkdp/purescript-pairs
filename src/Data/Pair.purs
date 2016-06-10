@@ -1,4 +1,16 @@
-module Data.Pair where
+-- | This module defines a datatype `Pair` and a few useful instances and
+-- | helper functions. Note that this is not just `Tuple a a` but rather a list
+-- | with exactly two elements. Specifically, the `Functor` instance maps over
+-- | both values in contrast to the `Functor` instance for `Tuple`.
+module Data.Pair
+  ( Pair(..)
+  , (^)
+  , fst
+  , snd
+  , curry
+  , uncurry
+  , swap
+  ) where
 
 import Prelude
 
@@ -41,16 +53,16 @@ instance showPair :: Show a => Show (Pair a) where
   show (x ^ y) = "(" <> show x <> ") ^ (" <> show y <> ")"
 
 instance functorPair :: Functor Pair where
-  map f (x ^ y) = (f x) ^ (f y)
+  map f (x ^ y) = f x ^ f y
 
 instance applyPair :: Apply Pair where
-  apply (f ^ g) (x ^ y) = (f x) ^ (g y)
+  apply (f ^ g) (x ^ y) = f x ^ g y
 
 instance applicativePair :: Applicative Pair where
   pure x = x ^ x
 
 instance bindPair :: Bind Pair where
-  bind (x ^ y) f = (fst $ f x) ^ (snd $ f y)
+  bind (x ^ y) f = fst (f x) ^ snd (f y)
 
 instance monadPair :: Monad Pair
 
