@@ -1,13 +1,22 @@
 module Test.Main where
 
 import Prelude
-import Data.Pair (Pair)
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Exception (EXCEPTION)
-import Control.Monad.Eff.Random (RANDOM)
-import Control.Monad.Eff.Console (CONSOLE)
 
 import Type.Proxy (Proxy(..), Proxy2(..))
+
+import Data.Array (cons, snoc, fromFoldable)
+import Data.Pair (Pair(..), fst, snd, swap, uncurry)
+import Data.Foldable (foldMap, foldr, foldl)
+import Data.Traversable (sum, product, sequence)
+import Data.Maybe (Maybe(..))
+
+import Control.Monad.Eff (Eff)
+import Control.Monad.Eff.Console (CONSOLE)
+import Control.Monad.Eff.Exception (EXCEPTION)
+import Control.Monad.Eff.Random (RANDOM)
+
+import Test.Assert (ASSERT, assert)
+
 import Test.QuickCheck.Laws.Data.Eq (checkEq)
 import Test.QuickCheck.Laws.Data.Ord (checkOrd)
 import Test.QuickCheck.Laws.Data.Functor (checkFunctor)
@@ -27,7 +36,12 @@ proxyString = Proxy
 proxy2 :: Proxy2 Pair
 proxy2 = Proxy2
 
-main :: Eff (console :: CONSOLE, random :: RANDOM, err :: EXCEPTION) Unit
+type Point = Pair Int
+
+point :: Int -> Int -> Point
+point = Pair
+
+main :: Eff (console :: CONSOLE, random :: RANDOM, err :: EXCEPTION, assert :: ASSERT) Unit
 main = do
   checkEq proxyNumber
   checkOrd proxyNumber
@@ -38,3 +52,24 @@ main = do
   checkMonad proxy2
   checkSemigroup proxyString
   checkMonoid proxyString
+
+  let p1 = point 2 3
+      p2 = point 4 7
+      square x = x * x
+
+  assert $ fst p1 == 2
+  assert $ snd p1 == 3
+  assert $ swap p1 == point 3 2
+  assert $ map (_ + 1) p1 == point 3 4
+  assert $ (sum <<< map square) p1 == 13
+  assert $ p2 > p1
+  assert $ product p2 == 28
+  assert $ show p1 == "(2) ^ (3)"
+  assert $ foldMap show p1 == "23"
+  assert $ fromFoldable p1 == [2, 3]
+  assert $ foldr cons [] p1 == [2, 3]
+  assert $ foldl snoc [] p1 == [2, 3]
+  assert $ ((+) <$> p1 <*> p2) == point 6 10
+  assert $ (uncurry (+) p1) == 5
+  assert $ sequence (Pair (Just 2) (Just 5)) == Just (Pair 2 5)
+  assert $ sequence (Pair (Just 2) Nothing) == Nothing

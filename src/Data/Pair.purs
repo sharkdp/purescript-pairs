@@ -38,7 +38,7 @@ derive instance eqPair :: Eq a => Eq (Pair a)
 derive instance ordPair :: Ord a => Ord (Pair a)
 
 instance showPair :: Show a => Show (Pair a) where
-  show (x ^ y) = "(" <> show x <> " ^ " <> show y <> ")"
+  show (x ^ y) = "(" <> show x <> ") ^ (" <> show y <> ")"
 
 instance functorPair :: Functor Pair where
   map f (x ^ y) = (f x) ^ (f y)
