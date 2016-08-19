@@ -18,7 +18,8 @@
     "purescript-console": "^1.0.0",
     "purescript-monoid": "^1.0.0",
     "purescript-foldable-traversable": "^1.0.0",
-    "purescript-distributive": "^1.0.0"
+    "purescript-distributive": "^1.0.0",
+    "purescript-quickcheck": "^1.0.0"
   },
   "devDependencies": {
     "purescript-quickcheck-laws": "^1.0.0",
