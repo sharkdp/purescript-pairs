@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "purescript-quickcheck-laws": "^1.0.0",
-    "purescript-assert": "^1.0.0"
+    "purescript-assert": "^1.0.0",
+    "purescript-psci-support": "^1.0.0"
   }
 }

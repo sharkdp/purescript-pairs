@@ -11,15 +11,18 @@ Example
 -------
 
 ``` purescript
-> let point1 = 2 ^ 3
-> let point2 = 4 ^ 7
+> let point1 = 2 ~ 3
+> let point2 = 4 ~ 7
 
 > sum point1
 5
 
 > (+) <$> point1 <*> point2
-(6) ^ (10)
+(6 ~ 10)
 
-> ("Hello" ^ "foo") <> pure " " <> ("World" ^ "bar")
-("Hello World") ^ ("foo bar")
+> ("Hello" ~ "foo") <> pure " " <> ("World" ~ "bar")
+("Hello World" ~ "foo bar")
+
+> collect (\x → x ~ x*x) (1 .. 5)
+([1,2,3,4,5] ~ [1,4,9,16,25])
 ```
