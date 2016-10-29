@@ -15,15 +15,15 @@
     "test"
   ],
   "dependencies": {
-    "purescript-console": "^1.0.0",
-    "purescript-monoid": "^1.0.0",
-    "purescript-foldable-traversable": "^1.0.0",
-    "purescript-distributive": "^1.0.0",
-    "purescript-quickcheck": "^1.0.0"
+    "purescript-console": "^2.0.0",
+    "purescript-monoid": "^2.0.0",
+    "purescript-foldable-traversable": "^2.0.0",
+    "purescript-distributive": "^2.0.0",
+    "purescript-quickcheck": "^3.0.0"
   },
   "devDependencies": {
-    "purescript-quickcheck-laws": "^1.0.0",
-    "purescript-assert": "^1.0.0",
-    "purescript-psci-support": "^1.0.0"
+    "purescript-quickcheck-laws": "^2.0.0",
+    "purescript-assert": "^2.0.0",
+    "purescript-psci-support": "^2.0.0"
   }
 }
