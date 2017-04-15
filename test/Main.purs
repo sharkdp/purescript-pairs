@@ -42,7 +42,7 @@ type Point = Pair Int
 point :: Int -> Int -> Point
 point = Pair
 
-main :: Eff (console :: CONSOLE, random :: RANDOM, err :: EXCEPTION, assert :: ASSERT) Unit
+main :: Eff (console :: CONSOLE, random :: RANDOM, exception :: EXCEPTION, assert :: ASSERT) Unit
 main = do
   checkEq proxyNumber
   checkOrd proxyNumber
