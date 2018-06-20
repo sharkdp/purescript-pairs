@@ -14,7 +14,6 @@ module Data.Pair
 
 import Prelude
 
-import Data.Monoid (class Monoid, mempty)
 import Data.Foldable (class Foldable)
 import Data.Traversable (class Traversable)
 import Data.Distributive (class Distributive)

@@ -11,12 +11,9 @@ import Data.Traversable (sum, product, sequence)
 import Data.Distributive (distribute, collect)
 import Data.Maybe (Maybe(..))
 
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE)
-import Control.Monad.Eff.Exception (EXCEPTION)
-import Control.Monad.Eff.Random (RANDOM)
+import Effect (Effect)
 
-import Test.Assert (ASSERT, assert)
+import Test.Assert (assert)
 
 import Test.QuickCheck.Laws.Data.Eq (checkEq)
 import Test.QuickCheck.Laws.Data.Ord (checkOrd)
@@ -42,7 +39,7 @@ type Point = Pair Int
 point :: Int -> Int -> Point
 point = Pair
 
-main :: Eff (console :: CONSOLE, random :: RANDOM, exception :: EXCEPTION, assert :: ASSERT) Unit
+main :: Effect Unit
 main = do
   checkEq proxyNumber
   checkOrd proxyNumber
