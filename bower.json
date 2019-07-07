@@ -16,12 +16,12 @@
   ],
   "dependencies": {
     "purescript-console": "^4.1.0",
-    "purescript-foldable-traversable": "^4.0.0",
+    "purescript-foldable-traversable": "^4.1.0",
     "purescript-distributive": "^4.0.0",
-    "purescript-quickcheck": "^5.0.0"
+    "purescript-quickcheck": "^6.0.0"
   },
   "devDependencies": {
-    "purescript-quickcheck-laws": "^4.0.0",
+    "purescript-quickcheck-laws": "^5.0.0",
     "purescript-assert": "^4.0.0",
     "purescript-psci-support": "^4.0.0"
   }
