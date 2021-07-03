@@ -6,8 +6,8 @@ import Type.Proxy (Proxy(..), Proxy2(..))
 
 import Data.Array (cons, snoc, fromFoldable)
 import Data.Pair (Pair(..), (~), fst, snd, swap, uncurry)
-import Data.Foldable (foldMap, foldr, foldl)
-import Data.Traversable (sum, product, sequence)
+import Data.Foldable (foldMap, foldr, foldl, product, sum)
+import Data.Traversable (sequence)
 import Data.Distributive (distribute, collect)
 import Data.Maybe (Maybe(..))
 
