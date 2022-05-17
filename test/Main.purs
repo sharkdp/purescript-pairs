@@ -2,7 +2,7 @@ module Test.Main where
 
 import Prelude
 
-import Type.Proxy (Proxy(..), Proxy2(..))
+import Type.Proxy (Proxy(..))
 
 import Data.Array (cons, snoc, fromFoldable)
 import Data.Pair (Pair(..), (~), fst, snd, swap, uncurry)
@@ -31,8 +31,8 @@ proxyNumber = Proxy
 proxyString :: Proxy (Pair String)
 proxyString = Proxy
 
-proxy2 :: Proxy2 Pair
-proxy2 = Proxy2
+proxy2 :: Proxy Pair
+proxy2 = Proxy
 
 type Point = Pair Int
 
