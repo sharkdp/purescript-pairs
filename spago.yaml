@@ -1,13 +1,12 @@
 package:
   name: pairs
   publish:
-    version: 9.0.2
+    version: 9.0.3
     license: MIT
     location:
       githubOwner: sharkdp
       githubRepo: purescript-pairs
   dependencies:
-    - console: ">=6.0.0 <7.0.0"
     - distributive: ">=6.0.0 <7.0.0"
     - foldable-traversable: ">=6.0.0 <7.0.0"
     - prelude: ">=6.0.0 <7.0.0"
@@ -15,7 +14,9 @@ package:
   test:
     main: Test.Main
     dependencies:
+      - arrays: ">=7.0.0 <8.0.0"
       - assert: ">=6.0.0 <7.0.0"
-      - psci-support: ">=6.0.0 <7.0.0"
+      - effect: ">=4.0.0 <5.0.0"
+      - maybe: ">=6.0.0 <7.0.0"
       - quickcheck-laws: ">=7.0.0 <8.0.0"
 workspace: {}
